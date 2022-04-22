@@ -1,4 +1,4 @@
-# Delta-Sigma-DAC-FPGA
+# Delta-Sigma-DAC-Verilog
 
 ## The measurements are conducted on Spartan 7 Xilinx FPGA with LPF setting - (680R, 1nF).
 
