@@ -13,8 +13,7 @@
 
 module dsa_two #(
 	parameter dac_bw = 16,
-	parameter os_mhz_freq = 192,
-	parameter filter_cutoff = 192000
+	parameter osr = 6
 )(
 
 	input wire clk,
@@ -23,12 +22,7 @@ module dsa_two #(
 	output wire dout
 );
 	
-	function integer clogb2 (input integer bit_depth);
-	begin
-		for(clogb2=0; bit_depth>0; clogb2=clogb2+1)
-			bit_depth = bit_depth >> 1;
-		end
-	endfunction
+	localparam mid_val = 2**(dac_bw - 1) + 2**(osr + 2);
 	
 	localparam bw_ext = 2;
 	localparam bw_tot = dac_bw + bw_ext;
@@ -38,8 +32,8 @@ module dsa_two #(
 	
 	reg signed		[bw_tot-1 : 0]	DAC_acc_1st;
 	
-	wire signed		[bw_tot-1 : 0]	max_val = (2**(dac_bw - 1) - 1);
-	wire signed		[bw_tot-1 : 0]	min_val = -(2**(dac_bw - 1));
+	wire signed		[bw_tot-1 : 0]	max_val = mid_val;
+	wire signed		[bw_tot-1 : 0]	min_val = -mid_val;
 	wire signed		[bw_tot-1 : 0]	dac_val = (!dout_r) ? max_val : min_val;
 	
 	wire signed		[bw_tot-1 : 0]	in_ext = {{bw_ext{din[dac_bw - 1]}}, din};
@@ -54,16 +48,15 @@ module dsa_two #(
 		end
 	end
 	
-	localparam bw_ext2 = $clog2(os_mhz_freq * 1000000 / filter_cutoff) + 4;
-	localparam bw_tot2 = bw_tot + bw_ext2;
+	localparam bw_tot2 = bw_tot + osr;
 	
 	reg signed		[bw_tot2-1 : 0]	DAC_acc_2nd;
 	
-	wire signed		[bw_tot2-1 : 0]	max_val2 = (2**(dac_bw - 1) - 1);
-	wire signed		[bw_tot2-1 : 0]	min_val2 = -(2**(dac_bw - 1));
-	wire signed		[bw_tot2-1 : 0]	dac_val2 = (!dout_r) ? max_val : min_val;
+	wire signed		[bw_tot2-1 : 0]	max_val2 = mid_val;
+	wire signed		[bw_tot2-1 : 0]	min_val2 = -mid_val;
+	wire signed		[bw_tot2-1 : 0]	dac_val2 = (!dout_r) ? max_val2 : min_val2;
 	
-	wire signed		[bw_tot2-1 : 0]	in_ext2 = {{bw_ext2 + 1{delta_s0_c1[bw_tot - 1]}}, delta_s0_c1[bw_tot - 1 : 1]};
+	wire signed		[bw_tot2-1 : 0]	in_ext2 = {{osr{delta_s0_c1[bw_tot - 1]}}, delta_s0_c1};
 	wire signed		[bw_tot2-1 : 0]	delta_s1_c0 = in_ext2 + dac_val2;
 	wire signed		[bw_tot2-1 : 0]	delta_s1_c1 = DAC_acc_2nd + delta_s1_c0;
 	
