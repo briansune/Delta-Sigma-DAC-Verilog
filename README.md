@@ -22,11 +22,10 @@ Oscillscope Measure:
 
 ![image](https://user-images.githubusercontent.com/29487339/164624808-22d7779e-76fe-42bc-9464-762ff3e42899.png)
 
+Single Stage Delta-Sigma DAC:
+
 ## Resource on FPGA:
 ![image](https://user-images.githubusercontent.com/29487339/164648001-f8835f9f-b554-4de4-a872-9f509e6d14c2.png)
-
-
-Single Stage Delta-Sigma DAC:
 
 What bitwidth is required on the first stage?
 
@@ -35,6 +34,9 @@ This is commonly considered with i.e. 16bit Input + 2bit.
 ![image](https://user-images.githubusercontent.com/29487339/164623849-5d9b166e-4096-4519-b08d-78ae2487f0d7.png)
 
 Two Stage Delta-Sigma DAC:
+
+## Resource on FPGA:
+![image](https://user-images.githubusercontent.com/29487339/164648891-c9bbf9a4-4b72-4ec6-b07a-804beaba7988.png)
 
 There are a major question when designing the ΔΣ DAC:
 
