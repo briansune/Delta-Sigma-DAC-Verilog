@@ -1,6 +1,10 @@
 # Delta-Sigma-DAC-FPGA
 
-Delta Sigma DAC FPGA
+## The measurements are conducted on Spartan 7 Xilinx FPGA with LPF setting - (680R, 1nF).
+
+Oscillscope Measure:
+
+![image](https://user-images.githubusercontent.com/29487339/164624808-22d7779e-76fe-42bc-9464-762ff3e42899.png)
 
 Single Stage Delta-Sigma DAC:
 
