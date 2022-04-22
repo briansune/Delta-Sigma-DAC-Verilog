@@ -22,6 +22,10 @@ Oscillscope Measure:
 
 ![image](https://user-images.githubusercontent.com/29487339/164624808-22d7779e-76fe-42bc-9464-762ff3e42899.png)
 
+## Resource on FPGA:
+![image](https://user-images.githubusercontent.com/29487339/164648001-f8835f9f-b554-4de4-a872-9f509e6d14c2.png)
+
+
 Single Stage Delta-Sigma DAC:
 
 What bitwidth is required on the first stage?
