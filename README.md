@@ -42,9 +42,9 @@ There are a major question when designing the ΔΣ DAC:
 
 What bitwidth is required on the second stage?
 
-My approach is considering 1st stage output i.e. [16bit + 2bit] + over_sample_rate.
+My approach is considering 1st stage output i.e. [16bit + 2bit] + over_sample_rate (i.e. 2^[6] 6bit).
 
-over_sample_rate for example 6 or above
+over_sample_rate for example 2^6 or above
 
 ![image](https://user-images.githubusercontent.com/29487339/164624610-c9ede55b-ccbb-4a3d-80c1-b08f9f5b3e32.png)
 
