@@ -15,6 +15,7 @@ Why it work?
 Why two stages?
 
 > The best answer can be referenced from : https://www.beis.de/Elektronik/DeltaSigma/1stOrderDisadvantages.html
+> https://www.youtube.com/embed/4SIJTl5du60?start=1300
 
 > In short when 0 or max (-ve, +ve) is insert to the DAC, the output will result in high tone amputitude that can be reduce via 2 stages.
 
